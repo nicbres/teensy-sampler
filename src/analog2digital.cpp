@@ -182,8 +182,8 @@ void triggerConversion(IMXRT_ADCS_t* pModule, unsigned int channel) {
 #endif
     if (channel > 15) {
 #ifdef SERIAL_DEBUG
-        Serial.printf(
-            "<<< adc::triggerConversion(0x%X, %u)\r\n", pModule, channel);
+        Serial.printf("<<< adc::triggerConversion(0x%X, %u)\r\n", pModule,
+                      channel);
 #endif
         return;
     }

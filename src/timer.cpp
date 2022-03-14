@@ -2,8 +2,8 @@
 #include "Arduino.h"
 #endif
 
-#include "timer.hpp"
 #include "imxrt.h"
+#include "timer.hpp"
 
 namespace timer {
 
@@ -77,7 +77,7 @@ void setupPeriodic() {
     PIT_MCR &= ~PIT_MCR_MDIS; // Enable PIT Module
 
     // Periodic Timer 3
-    //PIT_LDVAL3 = 263; // 500kHz
+    // PIT_LDVAL3 = 263; // 500kHz
     PIT_LDVAL3 = 527; // 250kHz
     // PIT_LDVAL3 = 0x0FFFFFFF;  // Slow periodic value for testing
     PIT_TCTRL3 |= PIT_TCTRL_TIE; // Enable Interrupt
