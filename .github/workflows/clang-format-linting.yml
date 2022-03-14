@@ -1,0 +1,24 @@
+name: Run clang-format Check
+
+on: [pull_request]
+jobs:
+  formatting-check:
+    name: Formatting Check
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        path:
+          - check: 'teensy/src'
+            exclude: ''
+          - check: 'teensy/include'
+            exclude: ''
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run clang-format style check for C/C++/Protobuf programs.
+      uses: jidicula/clang-format-action@v4.5.0
+      with:
+        clang-format-version: '13'
+        check-path: ${{ matrix.path['check'] }}
+        exclude-regex: ${{ matrix.path['exclude'] }}
+        fallback-style: 'LLVM'
+
