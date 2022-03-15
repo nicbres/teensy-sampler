@@ -8,7 +8,7 @@ import matplotlib.animation as animation
 
 
 logging.basicConfig(
-    #filename="receive_data.log",
+    # filename="receive_data.log",
     format="%(levelname)s: %(message)s",
     level=logging.INFO,
 )
@@ -26,12 +26,13 @@ logging.debug(f"IP: {UDP_IP}")
 logging.debug(f"Port: {UDP_PORT}")
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-sock.bind((UDP_IP,UDP_PORT))
+sock.bind((UDP_IP, UDP_PORT))
 logging.debug("Socket connected")
+
 
 def unpack_words(
     byte_string,
-    word_length = 4,
+    word_length=4,
 ):
     if len(byte_string) % word_length:
         raise ValueError("byte string is not integer multiple of word length")
@@ -44,6 +45,7 @@ def unpack_words(
 
     return words
 
+
 def convert_word_to_integer(
     word,
 ):
@@ -53,9 +55,10 @@ def convert_word_to_integer(
 
     return integer
 
+
 # setup plots
 frame_length = 250000
-#frame_length = 30
+# frame_length = 30
 fig, ax = plt.subplots()
 
 x = np.arange(frame_length)
@@ -63,14 +66,14 @@ y = np.zeros(frame_length)
 
 ax.grid()
 
-lines, = ax.plot(x, y)
+(lines,) = ax.plot(x, y)
 plt.pause(0.001)
 fig.canvas.draw()
 plt.show(block=False)
 
 index = 0
 while True:
-    data, addr = sock.recvfrom(500) # buffer size is 1024 bytes
+    data, addr = sock.recvfrom(500)  # buffer size is 1024 bytes
 
     words = unpack_words(byte_string=data)
     header = convert_word_to_integer(word=words[0])
@@ -91,4 +94,3 @@ while True:
 
         fig.canvas.draw()
         plt.pause(0.001)
-
