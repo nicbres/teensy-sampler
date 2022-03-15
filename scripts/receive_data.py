@@ -4,7 +4,6 @@ import socket
 import matplotlib.pyplot as plt
 import numpy as np
 
-
 logging.basicConfig(
     # filename="receive_data.log",
     format="%(levelname)s: %(message)s",
@@ -12,7 +11,7 @@ logging.basicConfig(
 )
 
 COMMANDS = {
-0x0: "NONE",
+    0x0: "NONE",
     0x1: "START",
     0xC: "DATA",
 }

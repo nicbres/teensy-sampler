@@ -20,10 +20,10 @@ static void conversionADC1ISR(void) {
 #ifdef SERIAL_DEBUG
     Serial.println(">>> conversionADC1ISR()");
 #endif
-    //TODO: disable keeper on pad
+    // TODO: disable keeper on pad
     uint32_t Data = IMXRT_ADC1.R0;
     eth::packet_t Packet;
-Packet.Header = eth::DATA;
+    Packet.Header = eth::DATA;
     Packet.Payload = Data;
     eth::sendData(&Packet);
 #ifdef SERIAL_DEBUG
