@@ -1,10 +1,9 @@
 import logging
-import os
 import socket
 
-import matplotlib.animation as animation
 import matplotlib.pyplot as plt
 import numpy as np
+
 
 logging.basicConfig(
     # filename="receive_data.log",
