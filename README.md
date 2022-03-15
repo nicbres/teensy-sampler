@@ -2,6 +2,9 @@
 
 Shows a multitude of different usages from periodic timers, ADCs, to ethernet while using interrupts.
 
+## Build Status
+[![Build PlatformIO project](https://github.com/nicbres/teensy-sampler/actions/workflows/build-platformio.yml/badge.svg)](https://github.com/nicbres/teensy-sampler/actions/workflows/build-platformio.yml)
+
 ## Requirements
 Requires a Teensy 4.1 with the ethernet extension.
 
