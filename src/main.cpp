@@ -4,6 +4,7 @@
 
 #include "analog2digital.hpp"
 #include "ethernet_communication.hpp"
+#include "input_output.hpp"
 #include "timer.hpp"
 
 static void periodicTimer3ISR(void) {
@@ -39,19 +40,9 @@ int main(void) {
     }
     Serial.printf("Serial connected\r\n");
 #endif
-    IMXRT_ADCS_t* pADC1 = adc::getModulePointer(adc::ADC1);
-    adc::preCalibrationSetupADC1();
-    adc::calibrate(pADC1);
 
-    adc::setup(pADC1);
-    adc::setupISR(pADC1, conversionADC1ISR);
+    gpio::setup();
 
-    eth::setup();
-
-    // periodic timer MUST be setup after ethernet
-    timer::setupPeriodic();
-    timer::setupPeriodicISR(3, periodicTimer3ISR);
-    timer::startPeriodic();
     while (true) {
 #ifdef SERIAL_DEBUG
         Serial.printf("Loop\r\n");

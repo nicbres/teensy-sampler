@@ -1,0 +1,4 @@
+
+namespace gpio {
+    void setup();
+}
